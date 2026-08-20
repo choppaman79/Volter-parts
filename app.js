@@ -1,4 +1,3 @@
-
 const D = window.VOLTER_DATA;
 const KEY="volter40_parts_v1";
 let state = JSON.parse(localStorage.getItem(KEY)||"null") || {parts:{}, annualHours:7200};
