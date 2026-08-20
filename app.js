@@ -73,8 +73,18 @@ function renderParts(){
 }
 search.oninput=renderParts; category.onchange=renderParts;
 
+function regularAnnual(r){
+  const h=state.annualHours||7200;
+  const interval=Number(r.interval), base=Number(r.stockBase);
+  if(!interval || !base || Number.isNaN(interval) || Number.isNaN(base)) return null;
+  return Math.floor(h/interval)*base;
+}
 function renderRegular(){
-  regularList.innerHTML=D.regular.map(r=>`<div class="partcard"><div class="parttop"><div><div class="partname">${esc(r.name)}</div><div class="partno">${esc(r.partNo)}</div></div><span class="badge">定期交換</span></div><div class="meta">${esc(r.spec)}　/　${r.interval?esc(r.interval)+"h":"補充・状態管理"}　/　年間予定 ${esc(r.annual)}</div><div class="meta">${esc(r.note)}</div></div>`).join("");
+  regularList.innerHTML=D.regular.map(r=>{
+    const n=regularAnnual(r);
+    const annualText=n===null?"—":`${n}${r.unit&&r.unit!=="—"?r.unit:""}`;
+    return `<div class="partcard"><div class="parttop"><div><div class="partname">${esc(r.name)}</div><div class="partno">${esc(r.partNo)}</div></div><span class="badge">定期交換</span></div><div class="meta">${esc(r.spec)}　/　${r.interval?esc(r.interval)+"h":"補充・状態管理"}　/　年間予定 ${annualText}</div><div class="meta">${esc(r.note)}</div></div>`;
+  }).join("");
 }
 function renderSchedule(){
   const h=Number(annualHours.value||7200);
