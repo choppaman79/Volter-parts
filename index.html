@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#173b63">
+<meta name="description" content="Volter 40 部品・在庫・点検管理アプリ">
+<title>Volter 40 部品管理</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div>
+    <div class="eyebrow">VOLTER 40</div>
+    <h1>部品管理</h1>
+  </div>
+  <button id="menuBtn" class="iconbtn" aria-label="メニュー">☰</button>
+</header>
+
+<main>
+  <section id="dashboard" class="view active">
+    <div class="hero">
+      <div>
+        <div class="eyebrow">MAINTENANCE CONTROL</div>
+        <h2>Volter 40を止めないための<br>部品管理</h2>
+        <p>定期交換・常備予備品・故障/摩耗時の部品をまとめて管理。</p>
+      </div>
+    </div>
+    <div class="cards">
+      <button class="stat" data-filter="all"><span>全パーツ</span><b id="countAll">0</b></button>
+      <button class="stat" data-filter="定期交換品"><span>定期交換品</span><b id="countRegular">0</b></button>
+      <button class="stat" data-filter="常備予備品"><span>常備予備品</span><b id="countSpare">0</b></button>
+      <button class="stat danger" data-filter="故障・摩耗時のみ"><span>故障・摩耗時</span><b id="countRepair">0</b></button>
+    </div>
+    <div class="panel">
+      <div class="panelhead"><h3>点検サイクル</h3><button class="textbtn" data-view="schedule">すべて見る →</button></div>
+      <div id="scheduleMini" class="schedulemini"></div>
+    </div>
+    <div class="panel">
+      <div class="panelhead"><h3>発注アラート</h3><button class="textbtn" data-view="parts">部品台帳 →</button></div>
+      <div id="alerts"></div>
+    </div>
+  </section>
+
+  <section id="parts" class="view">
+    <div class="pagehead">
+      <div><div class="eyebrow">PARTS MASTER</div><h2>部品台帳</h2></div>
+      <button id="exportBtn" class="smallbtn">CSV出力</button>
+    </div>
+    <div class="searchrow">
+      <input id="search" type="search" placeholder="品名・品番・仕様で検索">
+      <select id="category">
+        <option value="all">すべて</option>
+        <option>定期交換品</option>
+        <option>常備予備品</option>
+        <option>故障・摩耗時のみ</option>
+      </select>
+    </div>
+    <div id="partsList" class="list"></div>
+  </section>
+
+  <section id="schedule" class="view">
+    <div class="pagehead"><div><div class="eyebrow">MAINTENANCE</div><h2>点検スケジュール</h2></div></div>
+    <div class="panel note"><b>年間運転時間</b><div class="hoursrow"><input id="annualHours" type="number" min="0" step="120" value="7200"><span>h / 年</span></div><p>運転時間を変更すると、年間の実施回数を目安として再計算します。</p></div>
+    <div id="scheduleList"></div>
+  </section>
+
+  <section id="regular" class="view">
+    <div class="pagehead"><div><div class="eyebrow">PLANNED STOCK</div><h2>定期交換品</h2></div></div>
+    <div id="regularList" class="list"></div>
+  </section>
+
+  <section id="settings" class="view">
+    <div class="pagehead"><div><div class="eyebrow">SETTINGS</div><h2>データ管理</h2></div></div>
+    <div class="panel">
+      <h3>この端末で保存</h3>
+      <p>在庫数・発注点・最終入庫日・最終交換日・保管場所は、このブラウザの端末内に保存されます。</p>
+      <div class="buttonrow">
+        <button id="backupBtn" class="primary">バックアップ(JSON)</button>
+        <label class="filebtn">復元(JSON)<input id="restoreInput" type="file" accept=".json" hidden></label>
+        <button id="resetBtn" class="dangerbtn">在庫データを初期化</button>
+      </div>
+    </div>
+    <div class="panel">
+      <h3>このアプリについて</h3>
+      <p>Volter 40の提供資料から作成した部品管理アプリです。定期交換周期と部品分類は、元の管理表をベースにしています。分類が「常備予備品」「故障・摩耗時のみ」となっているものは、在庫管理のための実務上の分類であり、Volterが全品の常備を指定しているという意味ではありません。</p>
+    </div>
+  </section>
+</main>
+
+<nav class="bottomnav">
+  <button data-view="dashboard" class="navactive">⌂<span>ホーム</span></button>
+  <button data-view="parts">▣<span>部品</span></button>
+  <button data-view="schedule">◷<span>点検</span></button>
+  <button data-view="regular">↻<span>定期品</span></button>
+  <button data-view="settings">⚙<span>設定</span></button>
+</nav>
+
+<div id="drawer" class="drawer">
+  <div class="drawerbg"></div>
+  <div class="drawerpanel">
+    <h3>Volter 40</h3>
+    <button data-view="dashboard">⌂ ホーム</button>
+    <button data-view="parts">▣ 全パーツ台帳</button>
+    <button data-view="regular">↻ 定期交換品</button>
+    <button data-view="schedule">◷ 点検スケジュール</button>
+    <button data-view="settings">⚙ データ管理</button>
+  </div>
+</div>
+
+<div id="modal" class="modal">
+  <div class="modalbg"></div>
+  <div class="modalbox">
+    <button id="modalClose" class="close">×</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
