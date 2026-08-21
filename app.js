@@ -30,7 +30,7 @@ function counts(){
 }
 function renderDashboard(){
   counts();
-  scheduleMini.innerHTML=D.schedule.slice(1,5).map(x=>`<div class="cycle"><small>${esc(x.label)}</small><b>${esc(x.hours)}h</b></div>`).join("");
+  scheduleMini.innerHTML=D.schedule.slice(0,5).map(x=>`<div class="cycle"><small>${esc(x.label)}</small><b>${esc(x.hours)}h</b></div>`).join("");
   const alerts=D.parts.filter(p=>p.category!=="故障・摩耗時のみ").map(p=>[p,pstate(p.partNo)]).filter(([p,s])=>s.stock<=s.reorder).slice(0,6);
   alertsEl = document.getElementById("alerts");
   alertsEl.innerHTML=alerts.length?alerts.map(([p,s])=>`<div class="alert"><div><b>${esc(p.name)}</b><div class="meta">${esc(p.partNo)}</div></div><span class="badge red">在庫 ${s.stock} / 発注点 ${s.reorder}</span></div>`).join(""):`<div class="empty">発注アラートはありません。</div>`;
