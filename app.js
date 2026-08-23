@@ -91,7 +91,8 @@ function renderSchedule(){
   state.annualHours=h; save();
   scheduleList.innerHTML=D.schedule.map(x=>{
     const n=x.hours?Math.floor(h/x.hours):0;
-    return `<div class="schedulecard"><div class="hours">${esc(x.hours)}h</div><h3>${esc(x.label)}　— ${n}回/年の目安</h3><p>${esc(x.tasks)}</p><p style="margin-top:7px">${esc(x.note)}</p></div>`;
+    const pct=x.hours?Math.min(100,Math.round(((h%x.hours)/x.hours)*100)):0;
+    return `<div class="schedulecard"><div class="scheduletop"><div class="hours">${esc(x.hours)}<span>h</span></div><div class="freq">${n}<span>回/年の目安</span></div></div><h3>${esc(x.label)}</h3><div class="gauge"><div class="gaugefill" style="width:${pct}%"></div></div><p>${esc(x.tasks)}</p><p class="schedulenote">${esc(x.note)}</p></div>`;
   }).join("");
 }
 annualHours.oninput=renderSchedule;
@@ -131,3 +132,5 @@ resetBtn.onclick=()=>{if(confirm("この端末に保存した在庫・発注点�
 
 renderDashboard();
 show("dashboard");
+const dataSourceEl=document.getElementById('dataSource');
+if(dataSourceEl && D.source) dataSourceEl.textContent="出典: "+D.source;
