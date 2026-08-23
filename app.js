@@ -3,7 +3,10 @@ const KEY="volter40_parts_v2";
 let state = JSON.parse(localStorage.getItem(KEY)||"null") || {parts:{}, annualHours:7200, logs:[]};
 if(!Array.isArray(state.logs)) state.logs=[];
 
-function save(){localStorage.setItem(KEY,JSON.stringify(state));}
+function save(){
+  localStorage.setItem(KEY,JSON.stringify(state));
+  if(window.__cloudPush) window.__cloudPush(state);
+}
 function pstate(no){return state.parts[no] ||= {stock:0,reorder:1,lastIn:"",lastOut:"",location:""}}
 function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
 
@@ -219,6 +222,25 @@ restoreInput.onchange=e=>{
   const r=new FileReader();r.onload=()=>{try{state=JSON.parse(r.result);save();location.reload()}catch{alert("バックアップファイルを読み込めませんでした。")}};r.readAsText(f);
 };
 resetBtn.onclick=()=>{if(confirm("この端末に保存した在庫・発注点などを初期化します。よろしいですか？")){localStorage.removeItem(KEY);location.reload()}};
+
+/* ---- クラウド同期ブリッジ（firebase-sync.js から呼び出される） ---- */
+function refreshCurrentView(){
+  const active=[...document.querySelectorAll(".view")].find(v=>v.classList.contains("active"));
+  if(active) show(active.id);
+}
+window.__cloud={
+  getState:()=>state,
+  applyRemoteState:(remote)=>{
+    if(!remote) return;
+    state={
+      parts:remote.parts||{},
+      annualHours:remote.annualHours ?? state.annualHours ?? 7200,
+      logs:Array.isArray(remote.logs)?remote.logs:[],
+    };
+    localStorage.setItem(KEY,JSON.stringify(state));
+    refreshCurrentView();
+  },
+};
 
 renderDashboard();
 show("dashboard");
