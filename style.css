@@ -1,2 +1,185 @@
-:root{--navy:#173b63;--blue:#2d6aa3;--bg:#f3f6f9;--card:#fff;--text:#17202a;--muted:#6c7783;--line:#dce3ea;--red:#c43d3d;--green:#2d7b57;--shadow:0 5px 20px rgba(20,45,70,.08)}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Noto Sans JP","Yu Gothic",sans-serif;padding-bottom:78px}.topbar{height:72px;background:var(--navy);color:#fff;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}.topbar h1{margin:0;font-size:21px}.eyebrow{font-size:10px;letter-spacing:.16em;opacity:.72;font-weight:700}.iconbtn{background:transparent;border:0;color:#fff;font-size:27px;padding:5px}.view{display:none;max-width:980px;margin:auto;padding:18px}.view.active{display:block}.hero{background:linear-gradient(135deg,#173b63,#2e6da6);color:#fff;border-radius:18px;padding:24px;box-shadow:var(--shadow);margin-bottom:14px}.hero h2{font-size:24px;line-height:1.35;margin:7px 0}.hero p{margin:0;opacity:.88;font-size:13px}.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:14px}.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px;text-align:left;box-shadow:var(--shadow)}.stat span{display:block;font-size:12px;color:var(--muted)}.stat b{display:block;font-size:26px;margin-top:5px}.stat.danger b{color:var(--red)}.panel{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:16px;margin-bottom:14px;box-shadow:var(--shadow)}.panelhead,.pagehead{display:flex;justify-content:space-between;align-items:center;gap:10px}.panel h3,.pagehead h2{margin:0 0 12px}.pagehead{margin-bottom:14px}.pagehead h2{font-size:24px}.textbtn{border:0;background:none;color:var(--blue);font-weight:700}.smallbtn,.primary,.filebtn,.dangerbtn{border:0;border-radius:9px;padding:10px 13px;font-weight:700;cursor:pointer}.smallbtn{background:#e7eef5;color:var(--navy)}.primary{background:var(--navy);color:#fff}.filebtn{background:#e7eef5;color:var(--navy);display:inline-block}.dangerbtn{background:#f8dddd;color:#9e2929}.buttonrow{display:flex;flex-wrap:wrap;gap:8px}.schedulemini{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.cycle{background:#f4f7fa;border-radius:10px;padding:10px}.cycle b{font-size:16px;display:block}.cycle small{color:var(--muted)}.alert{display:flex;justify-content:space-between;gap:10px;padding:11px 0;border-bottom:1px solid var(--line)}.alert:last-child{border-bottom:0}.badge{font-size:11px;border-radius:999px;padding:4px 8px;background:#e6f1eb;color:var(--green);white-space:nowrap}.badge.red{background:#fae2e2;color:var(--red)}.searchrow{display:grid;grid-template-columns:1fr 190px;gap:8px;margin-bottom:12px}input,select{font:inherit;border:1px solid var(--line);border-radius:10px;background:#fff;padding:12px;outline:none}input:focus,select:focus{border-color:var(--blue)}.list{display:grid;gap:9px}.partcard{background:#fff;border:1px solid var(--line);border-radius:13px;padding:14px;box-shadow:var(--shadow)}.parttop{display:flex;justify-content:space-between;gap:10px}.partname{font-weight:800;font-size:15px}.partno{font-family:ui-monospace,monospace;font-size:12px;color:var(--blue);margin-top:4px}.meta{color:var(--muted);font-size:12px;margin-top:7px}.stockgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:12px}.stockgrid label{font-size:10px;color:var(--muted);display:block}.stockgrid input{width:100%;padding:8px;font-size:13px}.actions{display:flex;justify-content:flex-end;gap:7px;margin-top:9px}.savebtn{background:var(--navy);color:#fff;border:0;border-radius:8px;padding:8px 12px;font-weight:700}.schedulecard{background:#fff;border:1px solid var(--line);border-radius:13px;padding:15px;margin-bottom:10px}.schedulecard .hours{font-size:22px;font-weight:800;color:var(--navy)}.schedulecard h3{margin:3px 0 7px}.schedulecard p{font-size:13px;color:var(--muted);margin:0}.note p{font-size:12px;color:var(--muted)}.hoursrow{display:flex;align-items:center;gap:8px}.hoursrow input{max-width:170px;font-weight:700}.bottomnav{position:fixed;bottom:0;left:0;right:0;height:68px;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);z-index:20}.bottomnav button{border:0;background:none;color:#76818c;font-size:19px}.bottomnav span{display:block;font-size:10px;margin-top:2px}.bottomnav .navactive{color:var(--navy);font-weight:800}.drawer{position:fixed;inset:0;z-index:30;display:none}.drawer.open{display:block}.drawerbg{position:absolute;inset:0;background:rgba(0,0,0,.35)}.drawerpanel{position:absolute;left:0;top:0;bottom:0;width:280px;background:#fff;padding:25px 15px;box-shadow:var(--shadow)}.drawerpanel h3{color:var(--navy);margin:0 0 20px}.drawerpanel button{display:block;width:100%;padding:14px;text-align:left;border:0;background:#fff;border-bottom:1px solid var(--line);font-size:15px}.modal{position:fixed;inset:0;z-index:40;display:none}.modal.open{display:block}.modalbg{position:absolute;inset:0;background:rgba(0,0,0,.45)}.modalbox{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:#fff;border-radius:16px;width:min(94vw,560px);max-height:88vh;overflow:auto;padding:22px;box-shadow:0 20px 60px rgba(0,0,0,.25)}.close{position:absolute;right:12px;top:8px;border:0;background:none;font-size:28px;color:#667}.detail h2{margin:0 30px 5px 0}.detail .code{font-family:monospace;color:var(--blue)}.detailrow{display:grid;grid-template-columns:120px 1fr;border-bottom:1px solid var(--line);padding:10px 0;font-size:13px}.empty{padding:25px;text-align:center;color:var(--muted);background:#fff;border-radius:12px}@media(max-width:650px){.schedulemini{grid-template-columns:repeat(2,1fr)}.searchrow{grid-template-columns:1fr}.stockgrid{grid-template-columns:repeat(2,1fr)}.view{padding:14px}.hero h2{font-size:21px}}
+/* ============================================================
+   Volter 40 部品管理 — Control Panel Theme
+   Palette drawn from the Volter machine's own status-LED green.
+   Typography: system stacks only (facility tool, must work offline
+   / on unreliable network — no webfont dependency).
+   Signature: schedule cards read like the plant's own HMI gauges,
+   with a fill-bar showing progress through the current interval.
+   ============================================================ */
+:root{
+  --ink:#0a0f0c;
+  --panel:#121a15;
+  --panel2:#182019;
+  --raised:#1c261e;
+  --line:#26332a;
+  --line-soft:#1c2620;
+  --volt:#9ee23d;
+  --volt-dim:#6fa62a;
+  --volt-glow:rgba(158,226,61,.16);
+  --amber:#f4b740;
+  --red:#ff6b5c;
+  --text:#eef3ea;
+  --muted:#8a9a8f;
+  --shadow:0 10px 28px rgba(0,0,0,.35);
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Consolas,"Roboto Mono",monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP","Yu Gothic",sans-serif;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--ink);color:var(--text);font-family:var(--sans);
+  padding-bottom:82px;
+  background-image:
+    linear-gradient(var(--ink),var(--ink)),
+    repeating-linear-gradient(0deg,rgba(158,226,61,.035) 0 1px,transparent 1px 28px),
+    repeating-linear-gradient(90deg,rgba(158,226,61,.035) 0 1px,transparent 1px 28px);
+  background-attachment:fixed;
+}
+
+/* ---- Topbar: control-panel header with LED strip ---- */
+.topbar{
+  height:72px;background:linear-gradient(180deg,#101710,#0d1310);color:var(--text);
+  padding:12px 18px;display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:10;border-bottom:2px solid var(--volt);
+  box-shadow:0 0 22px var(--volt-glow);
+}
+.topbar h1{margin:0;font-size:20px;font-weight:800;letter-spacing:-.02em}
+.eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:var(--volt);font-weight:700;text-transform:uppercase}
+.iconbtn{background:transparent;border:0;color:var(--text);font-size:26px;padding:5px}
+
+.view{display:none;max-width:980px;margin:auto;padding:18px}
+.view.active{display:block}
+
+/* ---- Hero: status-panel readout ---- */
+.hero{
+  background:linear-gradient(150deg,#101a12,#0c1310 65%);
+  border:1px solid var(--line);border-radius:16px;padding:26px 22px;
+  box-shadow:var(--shadow);margin-bottom:14px;position:relative;overflow:hidden;
+}
+.hero::after{
+  content:"";position:absolute;right:-40px;top:-40px;width:180px;height:180px;
+  background:radial-gradient(circle,var(--volt-glow),transparent 70%);
+}
+.hero h2{font-size:25px;line-height:1.35;margin:8px 0;font-weight:800;letter-spacing:-.01em;color:var(--text)}
+.hero p{margin:0;color:var(--muted);font-size:13px}
+
+/* ---- Stat cards ---- */
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:14px}
+.stat{
+  background:var(--panel);border:1px solid var(--line);border-top:2px solid var(--volt-dim);
+  border-radius:12px;padding:15px;text-align:left;box-shadow:var(--shadow);
+}
+.stat span{display:block;font-size:11px;color:var(--muted);font-family:var(--mono);letter-spacing:.04em}
+.stat b{display:block;font-size:28px;margin-top:6px;font-family:var(--mono);color:var(--volt);font-weight:700;font-variant-numeric:tabular-nums}
+.stat.danger{border-top-color:var(--red)}
+.stat.danger b{color:var(--red)}
+
+/* ---- Panels ---- */
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px;box-shadow:var(--shadow)}
+.panelhead,.pagehead{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.panel h3,.pagehead h2{margin:0 0 12px;color:var(--text);font-weight:800}
+.pagehead{margin-bottom:14px}
+.pagehead h2{font-size:23px;letter-spacing:-.01em}
+.textbtn{border:0;background:none;color:var(--volt);font-weight:700;font-size:13px}
+
+.smallbtn,.primary,.filebtn,.dangerbtn{border:0;border-radius:9px;padding:10px 13px;font-weight:700;cursor:pointer;font-size:13px}
+.smallbtn{background:var(--raised);color:var(--volt);border:1px solid var(--line)}
+.primary{background:var(--volt);color:#0a0f0c}
+.filebtn{background:var(--raised);color:var(--volt);display:inline-block;border:1px solid var(--line)}
+.dangerbtn{background:rgba(255,107,92,.13);color:var(--red);border:1px solid rgba(255,107,92,.35)}
+.buttonrow{display:flex;flex-wrap:wrap;gap:8px}
+
+/* ---- Dashboard mini schedule ---- */
+.schedulemini{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.cycle{background:var(--raised);border:1px solid var(--line-soft);border-radius:10px;padding:10px 8px;text-align:center}
+.cycle b{font-size:15px;display:block;font-family:var(--mono);color:var(--volt)}
+.cycle small{color:var(--muted);font-size:10px}
+
+.alert{display:flex;justify-content:space-between;gap:10px;padding:11px 0;border-bottom:1px solid var(--line-soft)}
+.alert:last-child{border-bottom:0}
+.badge{font-family:var(--mono);font-size:10px;border-radius:999px;padding:4px 9px;background:var(--volt-glow);color:var(--volt);white-space:nowrap;letter-spacing:.03em}
+.badge.red{background:rgba(255,107,92,.15);color:var(--red)}
+
+/* ---- Search / filter ---- */
+.searchrow{display:grid;grid-template-columns:1fr 190px;gap:8px;margin-bottom:12px}
+input,select{
+  font:inherit;border:1px solid var(--line);border-radius:10px;background:var(--panel2);
+  color:var(--text);padding:12px;outline:none;
+}
+input::placeholder{color:var(--muted)}
+input:focus,select:focus{border-color:var(--volt);box-shadow:0 0 0 3px var(--volt-glow)}
+
+/* ---- Parts list ---- */
+.list{display:grid;gap:9px}
+.partcard{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:14px;box-shadow:var(--shadow)}
+.parttop{display:flex;justify-content:space-between;gap:10px}
+.partname{font-weight:800;font-size:15px;color:var(--text)}
+.partno{font-family:var(--mono);font-size:12px;color:var(--volt);margin-top:4px;letter-spacing:.02em}
+.meta{color:var(--muted);font-size:12px;margin-top:7px;line-height:1.6}
+.stockgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:12px}
+.stockgrid label{font-size:10px;color:var(--muted);display:block;font-family:var(--mono)}
+.stockgrid input{width:100%;padding:8px;font-size:13px;font-family:var(--mono)}
+.actions{display:flex;justify-content:flex-end;gap:7px;margin-top:9px}
+.savebtn{background:var(--volt);color:#0a0f0c;border:0;border-radius:8px;padding:8px 14px;font-weight:800}
+
+/* ---- Schedule cards: HMI gauge look (signature element) ---- */
+.schedulecard{
+  background:var(--panel);border:1px solid var(--line);border-radius:13px;
+  padding:16px;margin-bottom:10px;position:relative;
+}
+.scheduletop{display:flex;justify-content:space-between;align-items:baseline}
+.schedulecard .hours{font-family:var(--mono);font-size:24px;font-weight:800;color:var(--volt);font-variant-numeric:tabular-nums}
+.schedulecard .hours span{font-size:12px;color:var(--muted);margin-left:2px}
+.schedulecard .freq{font-family:var(--mono);font-size:13px;color:var(--muted);text-align:right}
+.schedulecard .freq span{display:block;font-size:10px}
+.schedulecard h3{margin:6px 0 10px;font-size:15px;color:var(--text)}
+.gauge{height:6px;background:var(--line-soft);border-radius:999px;overflow:hidden;margin-bottom:11px}
+.gaugefill{height:100%;background:linear-gradient(90deg,var(--volt-dim),var(--volt));box-shadow:0 0 8px var(--volt-glow);border-radius:999px;transition:width .3s}
+.schedulecard p{font-size:13px;color:var(--muted);margin:0;line-height:1.6}
+.schedulecard .schedulenote{margin-top:8px;font-size:12px;opacity:.8}
+
+.note p{font-size:12px;color:var(--muted)}
+.sourcetext{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:10px;padding-top:10px;border-top:1px solid var(--line-soft)}
+.hoursrow{display:flex;align-items:center;gap:8px}
+.hoursrow input{max-width:170px;font-weight:700;font-family:var(--mono)}
+.hoursrow span{color:var(--muted);font-size:13px}
+
+/* ---- Bottom nav ---- */
+.bottomnav{
+  position:fixed;bottom:0;left:0;right:0;height:68px;
+  background:rgba(10,15,12,.92);backdrop-filter:blur(14px);
+  border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);z-index:20;
+}
+.bottomnav button{border:0;background:none;color:var(--muted);font-size:19px}
+.bottomnav span{display:block;font-size:10px;margin-top:2px;font-family:var(--mono)}
+.bottomnav .navactive{color:var(--volt);font-weight:800;text-shadow:0 0 10px var(--volt-glow)}
+
+/* ---- Drawer ---- */
+.drawer{position:fixed;inset:0;z-index:30;display:none}
+.drawer.open{display:block}
+.drawerbg{position:absolute;inset:0;background:rgba(0,0,0,.55)}
+.drawerpanel{position:absolute;left:0;top:0;bottom:0;width:280px;background:var(--panel);padding:25px 15px;box-shadow:var(--shadow);border-right:1px solid var(--line)}
+.drawerpanel h3{color:var(--volt);margin:0 0 20px;font-family:var(--mono);letter-spacing:.04em}
+.drawerpanel button{display:block;width:100%;padding:14px;text-align:left;border:0;background:none;color:var(--text);border-bottom:1px solid var(--line-soft);font-size:15px}
+
+/* ---- Modal ---- */
+.modal{position:fixed;inset:0;z-index:40;display:none}
+.modal.open{display:block}
+.modalbg{position:absolute;inset:0;background:rgba(0,0,0,.65)}
+.modalbox{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  background:var(--panel);border:1px solid var(--line);border-radius:16px;
+  width:min(94vw,560px);max-height:88vh;overflow:auto;padding:22px;box-shadow:0 24px 70px rgba(0,0,0,.55);
+}
+.close{position:absolute;right:12px;top:8px;border:0;background:none;font-size:28px;color:var(--muted)}
+.detail h2{margin:0 30px 5px 0;color:var(--text)}
+.detail .code{font-family:var(--mono);color:var(--volt)}
+.detailrow{display:grid;grid-template-columns:120px 1fr;border-bottom:1px solid var(--line-soft);padding:10px 0;font-size:13px;color:var(--text)}
+.empty{padding:25px;text-align:center;color:var(--muted);background:var(--panel);border:1px solid var(--line);border-radius:12px}
+
+@media(max-width:650px){
+  .schedulemini{grid-template-columns:repeat(3,1fr)}
+  .searchrow{grid-template-columns:1fr}
+  .stockgrid{grid-template-columns:repeat(2,1fr)}
+  .view{padding:14px}
+  .hero h2{font-size:21px}
+}
