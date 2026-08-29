@@ -1,5 +1,6 @@
 const D = window.VOLTER_DATA;
-const KEY="volter40_parts_v3";
+const KEY="volter40_parts_v4";
+const LAST_INSPECTOR_KEY="volter40_last_inspector";
 let state = JSON.parse(localStorage.getItem(KEY)||"null") || {parts:{}, annualHours:7200, logs:[], customParts:[]};
 if(!Array.isArray(state.logs)) state.logs=[];
 if(!Array.isArray(state.customParts)) state.customParts=[];
@@ -184,6 +185,7 @@ function openLogModal(stageIdx, existingLog){
     <h2>${esc(st.label)}</h2>
     <div class="code">${isEmergency?"随時対応":esc(st.hours)+"h ステージ点検"}</div>
     <div class="detailrow"><b>実施日</b><span><input id="logDate" type="date" value="${isEdit?esc(existingLog.date):today}"></span></div>
+    <div class="detailrow"><b>点検者</b><span><input id="logInspector" placeholder="例：迫 健太" value="${isEdit?esc(existingLog.inspector||""):esc(localStorage.getItem(LAST_INSPECTOR_KEY)||"")}"></span></div>
     <h3 style="margin:16px 0 8px">点検項目</h3>
     <div id="logChecklist">${checklistItems.map((item,i)=>`<label class="checkrow"><input type="checkbox" data-idx="${i}" ${checkedState[i]?"checked":""}><span>${esc(item)}</span></label>`).join("")||'<p class="meta">個別項目の登録なし。下の備考欄に対応内容をご記入ください。</p>'}</div>
     <h3 style="margin:16px 0 8px">交換・使用した部品</h3>
@@ -221,9 +223,12 @@ function openLogModal(stageIdx, existingLog){
   };
   document.getElementById("logSaveBtn").onclick=()=>{
     const checks=[...document.querySelectorAll("#logChecklist input[type=checkbox]")].map((c,i)=>({item:checklistItems[i],checked:c.checked}));
+    const inspector=document.getElementById("logInspector").value.trim();
+    if(inspector) localStorage.setItem(LAST_INSPECTOR_KEY, inspector);
     if(isEdit){
       Object.assign(existingLog,{
         date:document.getElementById("logDate").value||existingLog.date,
+        inspector,
         checklist:checks,parts:logDraftParts.slice(),
         note:document.getElementById("logNote").value.trim(),
       });
@@ -231,6 +236,7 @@ function openLogModal(stageIdx, existingLog){
       const entry={
         id:Date.now(),stage:st.stage,label:st.label,hours:st.hours,
         date:document.getElementById("logDate").value||today,
+        inspector,
         checklist:checks,parts:logDraftParts.slice(),
         note:document.getElementById("logNote").value.trim(),
       };
@@ -257,7 +263,7 @@ function renderLogs(){
     const partsText=l.parts.length?l.parts.map(p=>`${esc(p.name)}×${p.qty}`).join("、"):"なし";
     const statusBadge=l.checklist.length?`${doneCount}/${l.checklist.length}項目完了`:(l.stage==="Emergency"?"緊急対応":"記録あり");
     return `<div class="partcard logcard">
-      <div class="parttop"><div><div class="partname">${l.stage==="Emergency"?"⚡ ":""}${esc(l.label)}</div><div class="partno">${esc(l.date)}${l.hours?"　"+esc(l.hours)+"h相当":""}</div></div><span class="badge">${statusBadge}</span></div>
+      <div class="parttop"><div><div class="partname">${l.stage==="Emergency"?"⚡ ":""}${esc(l.label)}</div><div class="partno">${esc(l.date)}${l.hours?"　"+esc(l.hours)+"h相当":""}${l.inspector?"　点検者："+esc(l.inspector):""}</div></div><span class="badge">${statusBadge}</span></div>
       <div class="meta"><b>交換・使用部品：</b>${partsText}</div>
       ${l.note?`<div class="meta"><b>備考：</b>${esc(l.note)}</div>`:""}
       <div class="actions"><button class="smallbtn" data-editid="${l.id}">編集</button><button class="smallbtn dangerbtn" data-id="${l.id}">削除</button></div>
