@@ -171,6 +171,9 @@ textarea{width:100%;resize:vertical;font-family:var(--sans)}
 .cloudbadge.ok::before{content:"● ";}
 .cloudbadge.warn{color:var(--amber);border-color:var(--amber)}
 .cloudbadge.warn::before{content:"● ";}
+
+.custommark{color:var(--volt);font-weight:700}
+.dangertext{color:var(--red)}
 .hoursrow{display:flex;align-items:center;gap:8px}
 .hoursrow input{max-width:170px;font-weight:700;font-family:var(--mono)}
 .hoursrow span{color:var(--muted);font-size:13px}
