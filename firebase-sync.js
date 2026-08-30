@@ -9,6 +9,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
 import {
   getAuth, signInAnonymously, onAuthStateChanged,
+  setPersistence, browserLocalPersistence, inMemoryPersistence,
 } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-auth.js";
 
 const firebaseConfig = {
@@ -27,6 +28,8 @@ const STATE_DOC = doc(db, "shared", "state");
 
 let applyingRemote = false; // Firestoreから受信して反映中は、その内容を書き戻さないためのガード
 let ready = false;
+window.__cloud = window.__cloud || {};
+window.__cloud.isReady = () => ready;
 
 function badge(text, cls){
   let el = document.getElementById("cloudBadge");
@@ -41,13 +44,34 @@ function badge(text, cls){
 
 badge("同期準備中…", "warn");
 
+// iPhoneの「ホーム画面に追加」で開いた場合（スタンドアロン表示）は、
+// 既定のIndexedDB永続化がフリーズすることがあるため、より安定した
+// localStorageベースの永続化に明示的に切り替える。それも失敗する場合は
+// メモリ内保持（タブを閉じるとログアウトするが、動作はする）にフォールバック。
+async function initAuth(){
+  try {
+    await setPersistence(auth, browserLocalPersistence);
+  } catch(e) {
+    console.warn("browserLocalPersistence設定失敗、inMemoryへフォールバック:", e);
+    try { await setPersistence(auth, inMemoryPersistence); } catch(e2){ console.warn(e2); }
+  }
+  signInAnonymously(auth).catch((err) => {
+    console.error("Firebase 認証エラー:", err);
+    badge("クラウド同期オフ（この端末のみ）", "warn");
+  });
+}
+initAuth();
+
+// 一定時間たっても準備が整わない場合は、原因が分かるメッセージに切り替える
+// （ホーム画面アプリ特有の問題が残っている場合の手がかりにする）
+setTimeout(() => {
+  if(!ready){
+    badge("同期に接続できません（Safariで直接開いてお試しください）", "warn");
+  }
+}, 9000);
+
 onAuthStateChanged(auth, (user) => {
   if(user) startSync();
-});
-
-signInAnonymously(auth).catch((err) => {
-  console.error("Firebase 認証エラー:", err);
-  badge("クラウド同期オフ（この端末のみ）", "warn");
 });
 
 function startSync(){
