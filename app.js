@@ -307,6 +307,7 @@ window.__cloud={
       parts:remote.parts||{},
       annualHours:remote.annualHours ?? state.annualHours ?? 7200,
       logs:Array.isArray(remote.logs)?remote.logs:[],
+      customParts:Array.isArray(remote.customParts)?remote.customParts:[],
     };
     localStorage.setItem(KEY,JSON.stringify(state));
     refreshCurrentView();
